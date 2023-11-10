@@ -4,6 +4,7 @@
 
 import gspread
 from google.oauth2.service_account import Credentials
+from hangman import Hangman
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,7 +18,8 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("hangman_words")
 words = SHEET.worksheet('words')
 
-data = words.get_all_values()
+data = words.col_values(1)
 
 print(data)
 
+hangman_game = Hangman()
