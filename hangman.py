@@ -5,6 +5,7 @@ class Hangman:
         print("HANGMAN")
         print("Welcome to Hangman!")
         self.difficulty = self.select_difficulty()
+        self.number_of_lives = self.get_number_of_lives(self.difficulty)
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
@@ -34,6 +35,25 @@ class Hangman:
                 print("Please enter a valid number")
         
         return int(user_selected_difficulty)
+
+    def get_number_of_lives(self, difficulty):
+        access_lives = {"Easy": 6, "Medium": 5, "Hard": 4}
+
+        if difficulty == 1:
+           easy_lives = access_lives["Easy"]
+           print(f"You have {easy_lives} lives")
+           return easy_lives
+        elif difficulty == 2:
+            medium_lives = access_lives["Medium"]
+            print(f"You have {medium_lives} lives")
+            return medium_lives
+        elif difficulty == 3:
+            hard_lives = access_lives["Hard"]
+            print(f"You have {hard_lives} lives")
+            return hard_lives
+            
+
+
 
 
             
