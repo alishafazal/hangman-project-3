@@ -3,40 +3,45 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 class Hangman:
+
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"
+        "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
     def __init__(self):
-        print("HANGMAN")
-        print("Welcome to Hangman!")
+        print("HANGMAN\n")
+        print("Welcome to Hangman!\n")
         self.difficulty = self.select_difficulty()
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
         self.chosen_word = self.get_word(self.difficulty)
-        self.current_guess_hidden = self.get_hidden_word(self.chosen_word)
+        self.current_word_hidden = self.get_hidden_word(self.chosen_word)
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
         print("1 - Easy")
         print("2 - Medium")
         print("3 - Hard")
-        print("4 - Random")
+        print("4 - Random\n")
 
         valid_difficulty = False
         while valid_difficulty == False:
             user_selected_difficulty = int(input("Enter the number of the coressponding level:\n"))
+            print()
 
             if user_selected_difficulty == 1:
-                print("You have selected to play game difficulty level: Easy")
+                print("You have selected to play game difficulty level: Easy\n")
                 valid_difficulty = True
             elif user_selected_difficulty == 2:
-                print("You have selected to play game difficulty level: Medium")
+                print("You have selected to play game difficulty level: Medium\n")
                 valid_difficulty = True
             elif user_selected_difficulty == 3:
-                print("You have selected to play game difficulty level: Hard")
+                print("You have selected to play game difficulty level: Hard\n")
                 valid_difficulty = True
             elif user_selected_difficulty == 4:
-                print("You have selected to play game difficulty level: Random")
+                print("You have selected to play game difficulty level: Random\n")
                 user_selected_difficulty = random.randint(1, 3)
                 valid_difficulty = True
             else:
-                print("Please enter a valid number")
+                print("Please enter a valid number\n")
         
         return int(user_selected_difficulty)
 
@@ -45,15 +50,15 @@ class Hangman:
 
         if difficulty == 1:
            easy_lives = access_lives["Easy"]
-           print(f"You have {easy_lives} lives")
+           print(f"You have {easy_lives} lives\n")
            return easy_lives
         elif difficulty == 2:
             medium_lives = access_lives["Medium"]
-            print(f"You have {medium_lives} lives")
+            print(f"You have {medium_lives} lives\n")
             return medium_lives
         elif difficulty == 3:
             hard_lives = access_lives["Hard"]
-            print(f"You have {hard_lives} lives")
+            print(f"You have {hard_lives} lives\n")
             return hard_lives
 
     def get_word(self, difficulty):
@@ -91,3 +96,23 @@ class Hangman:
         for letter in chosen_word:
             hidden_word += hidden_letter
         return hidden_word
+
+    def make_a_guess(self):
+        correct_input = False
+        while correct_input == False:
+            try:
+                user_guess = input("Guess a letter:\n")
+                if user_guess not in alphabet:
+                    raise ValueError("You entered an invalid input. Please enter a valid letter")
+            except ValueError as e:
+                print(f"ValueError: {e}")
+            return user_guess     
+
+    def run_game(self):
+        print("Let's play!\n")
+        user_guess = self.make_a_guess()
+
+
+    
+
+    
