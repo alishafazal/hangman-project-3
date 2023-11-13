@@ -1,4 +1,6 @@
 import random
+import gspread
+from google.oauth2.service_account import Credentials
 
 class Hangman:
     def __init__(self):
@@ -6,6 +8,7 @@ class Hangman:
         print("Welcome to Hangman!")
         self.difficulty = self.select_difficulty()
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
+        self.chosen_word = self.get_word()
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
@@ -51,19 +54,20 @@ class Hangman:
             hard_lives = access_lives["Hard"]
             print(f"You have {hard_lives} lives")
             return hard_lives
-            
 
+    def get_word(self):
+        SCOPE = [
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive.file",
+            "https://www.googleapis.com/auth/drive"
+            ]
 
+        CREDS = Credentials.from_service_account_file('creds.json')
+        SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+        GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+        SHEET = GSPREAD_CLIENT.open("hangman_words")
+        WORDS = SHEET.worksheet('words')
 
-
-            
-            
-
-
-
-
-
-
-
-
-     
+        difficulty_column_words = WORDS.col_values(1)
+        difficulty_column_words.pop(0)
+        print(difficulty_column_words)
