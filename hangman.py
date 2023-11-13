@@ -8,7 +8,7 @@ class Hangman:
         print("Welcome to Hangman!")
         self.difficulty = self.select_difficulty()
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
-        self.chosen_word = self.get_word()
+        self.chosen_word = self.get_word(self.difficulty)
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
@@ -55,7 +55,7 @@ class Hangman:
             print(f"You have {hard_lives} lives")
             return hard_lives
 
-    def get_word(self):
+    def get_word(self, difficulty):
         SCOPE = [
             "https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/drive.file",
@@ -68,6 +68,18 @@ class Hangman:
         SHEET = GSPREAD_CLIENT.open("hangman_words")
         WORDS = SHEET.worksheet('words')
 
-        difficulty_column_words = WORDS.col_values(1)
-        difficulty_column_words.pop(0)
-        print(difficulty_column_words)
+        if difficulty == 1:
+            easy_column_words = WORDS.col_values(1)
+            easy_column_words.pop(0)
+            easy_random_word = random.choice(easy_column_words)
+            return easy_random_word
+        elif difficulty == 2:
+            medium_column_words = WORDS.col_values(2)
+            medium_column_words.pop(0)
+            medium_random_word = random.choice(medium_column_words)
+            return medium_random_word
+        elif difficulty == 3:
+            hard_column_words = WORDS.col_values(3)
+            hard_column_words.pop(0)
+            hard_random_word = random.choice(hard_column_words)
+            return hard_random_word
