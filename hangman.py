@@ -9,7 +9,7 @@ class Hangman:
         self.difficulty = self.select_difficulty()
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
         self.chosen_word = self.get_word(self.difficulty)
-        self.current_guess_hidden = self.current_guess(self.chosen_word)
+        self.current_guess_hidden = self.get_hidden_word(self.chosen_word)
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
@@ -85,10 +85,9 @@ class Hangman:
             hard_random_word = random.choice(hard_column_words)
             return hard_random_word
 
-    def current_guess(self, chosen_word):
+    def get_hidden_word(self, chosen_word):
         hidden_word = ""
+        hidden_letter = "-"
         for letter in chosen_word:
-            letter = "-"
-            hidden_word += letter
-        print(hidden_word)
-        return(hidden_word)
+            hidden_word += hidden_letter
+        return hidden_word
