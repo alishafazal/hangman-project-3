@@ -5,3 +5,4 @@
 from hangman import Hangman
 
 hangman_game = Hangman()
+hangman_game.run_game()

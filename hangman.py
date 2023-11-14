@@ -102,7 +102,7 @@ class Hangman:
         while correct_input == False:
             try:
                 user_guess = input("Guess a letter:\n")
-                if user_guess not in alphabet:
+                if user_guess not in self.alphabet:
                     raise ValueError("You entered an invalid input. Please enter a valid letter")
             except ValueError as e:
                 print(f"ValueError: {e}")
