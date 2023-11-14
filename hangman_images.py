@@ -1,8 +1,9 @@
 
 
-class HangmanImages():
+class HangmanImages:
+    @staticmethod
     def easy_lives_images():
-        easy_lives_stage = [ """
+        easy_lives_stage = ["""
             ___________
             |/       |
             |
@@ -53,8 +54,11 @@ class HangmanImages():
             """
         ]
 
-        def medium_lives_images():
-            medium_lives_stage = ["""
+        return easy_lives_stage
+
+    @staticmethod
+    def medium_lives_images():
+        medium_lives_stage = ["""
             ___________
             |/       |
             |        O
@@ -97,8 +101,11 @@ class HangmanImages():
             """
             ]
 
-        def hard_lives_images():
-            hard_lives_stage = ["""
+        return medium_lives_stage
+
+    @staticmethod
+    def hard_lives_images():
+        hard_lives_stage = ["""
             ___________
             |/       |
             |        O
@@ -132,3 +139,5 @@ class HangmanImages():
             |__________
             """
             ]
+
+        return hard_lives_stage

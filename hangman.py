@@ -1,10 +1,11 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
+from hangman_images import HangmanImages
 
 class Hangman:
 
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
         "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
     def __init__(self):
@@ -14,6 +15,7 @@ class Hangman:
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
         self.chosen_word = self.get_word(self.difficulty)
         self.current_word_hidden = self.get_hidden_word(self.chosen_word)
+        self.hangman_images = self.get_hangman_images(self.difficulty)
 
     def select_difficulty(self):
         print("Which level of difficulty would you like to play?")
@@ -24,26 +26,28 @@ class Hangman:
 
         valid_difficulty = False
         while valid_difficulty == False:
-            user_selected_difficulty = int(input("Enter the number of the coressponding level(1-4):\n"))
-            print()
+            try:
+                user_selected_difficulty = int(input("Enter the number of the coressponding level(1-4):\n"))
+                print()
+                valid_difficulty = True
+            except ValueError as e:
+                print("Please enter a number between 1-4")
+                continue
 
             if user_selected_difficulty == 1:
                 print("You have selected to play game difficulty level: Easy\n")
-                valid_difficulty = True
             elif user_selected_difficulty == 2:
                 print("You have selected to play game difficulty level: Medium\n")
-                valid_difficulty = True
             elif user_selected_difficulty == 3:
                 print("You have selected to play game difficulty level: Hard\n")
-                valid_difficulty = True
             elif user_selected_difficulty == 4:
                 print("You have selected to play game difficulty level: Random\n")
                 user_selected_difficulty = random.randint(1, 3)
-                valid_difficulty = True
             else:
                 print("Please enter a valid number\n")
-        
-        return int(user_selected_difficulty)
+                valid_difficulty = False
+
+        return user_selected_difficulty
 
     def get_number_of_lives(self, difficulty):
         access_lives = {"Easy": 6, "Medium": 5, "Hard": 4}
@@ -97,6 +101,14 @@ class Hangman:
             hidden_word += hidden_letter
         return hidden_word
 
+    def get_hangman_images(self, difficulty):
+        if difficulty == 1:
+            return HangmanImages.easy_lives_images()
+        elif difficulty == 2:
+            return HangmanImages.medium_lives_images()
+        elif difficulty == 3:
+            return HangmanImages.hard_lives_images()
+
     def make_a_guess(self):
         correct_input = False
         while correct_input == False:
@@ -108,11 +120,26 @@ class Hangman:
                 print(f"ValueError: {e}")
             else:
                 correct_input = True
-        return user_guess     
+        return user_guess
+
+    def check_user_guess(self, user_guess, current_word_hidden):
+        letter_match = False
+        for index in range(len(self.chosen_word)):
+            if self.chosen_word[index] == user_guess:
+                current_word_hidden = current_word_hidden[:index] + user_guess + current_word_hidden[index + 1:]
+                letter_match = True
+        if letter_match == False:
+            self.number_of_lives -= 1
+        print(current_word_hidden)
+        print(self.hangman_images[-self.number_of_lives])
+        print(f"You have {self.number_of_lives} lives remaining")
+        return current_word_hidden
 
     def run_game(self):
         print("Let's play!\n")
-        user_guess = self.make_a_guess()
+        while self.number_of_lives > 0:
+            user_guess = self.make_a_guess()
+            self.current_word_hidden = self.check_user_guess(user_guess, self.current_word_hidden)
 
 
     
