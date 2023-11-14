@@ -24,7 +24,7 @@ class Hangman:
 
         valid_difficulty = False
         while valid_difficulty == False:
-            user_selected_difficulty = int(input("Enter the number of the coressponding level:\n"))
+            user_selected_difficulty = int(input("Enter the number of the coressponding level(1-4):\n"))
             print()
 
             if user_selected_difficulty == 1:
@@ -103,10 +103,12 @@ class Hangman:
             try:
                 user_guess = input("Guess a letter:\n")
                 if user_guess not in self.alphabet:
-                    raise ValueError("You entered an invalid input. Please enter a valid letter")
+                    raise ValueError("Invalid input. Please enter a valid letter")
             except ValueError as e:
                 print(f"ValueError: {e}")
-            return user_guess     
+            else:
+                correct_input = True
+        return user_guess     
 
     def run_game(self):
         print("Let's play!\n")
