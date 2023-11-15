@@ -131,7 +131,7 @@ class Hangman:
         if letter_match == False:
             self.number_of_lives -= 1
         print(current_word_hidden)
-        print(self.hangman_images[-(self.number_of_lives + 1)])
+        print(self.hangman_images[self.number_of_lives])
         print(f"You have {self.number_of_lives} lives remaining")
         return current_word_hidden
 
