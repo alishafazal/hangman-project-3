@@ -1,5 +1,6 @@
 import random
 import time
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
@@ -171,12 +172,10 @@ class Hangman:
             if self.chosen_word[index] == user_guess:
                 current_word_hidden = current_word_hidden[:index] + user_guess + current_word_hidden[index + 1:]
                 letter_match = True
-                print(self.number_of_lives)
-                print(f'list length: {len(self.hangman_images)}')
         if letter_match == False:
             self.number_of_lives -= 1
         print(current_word_hidden)
-        print(self.hangman_images[self.number_of_lives - 1])
+        print(self.hangman_images[self.number_of_lives])
         print(f"You have {self.number_of_lives} lives remaining")
         return current_word_hidden
 
@@ -220,6 +219,7 @@ class Hangman:
         won or lost based on whether the word has been guessed or if there are no
         lives remaining
         """
+        os.system('cls||clear')
         print("Let's play!\n")
         while self.number_of_lives > 0:
             user_guess = self.make_a_guess()
