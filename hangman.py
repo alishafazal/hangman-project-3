@@ -131,17 +131,44 @@ class Hangman:
         if letter_match == False:
             self.number_of_lives -= 1
         print(current_word_hidden)
-        print(self.hangman_images[-self.number_of_lives])
+        print(self.hangman_images[-(self.number_of_lives + 1)])
         print(f"You have {self.number_of_lives} lives remaining")
         return current_word_hidden
+
+    def has_word_been_guessed(self, current_word_hidden):
+        for letter in current_word_hidden:
+            if letter == "-":
+                return False
+        return True
+
+    def restart_game(self):
+        valid_answer = False
+        while valid_answer == False:
+            play_again = input("Would you like to play again?\ny/n \n")
+            if play_again == "y" or play_again == "n":
+                valid_answer = True
+            else:
+                print("Please enter either y or n")
+                valid_answer = False
+
+        if play_again == "y":
+            self.difficulty = self.select_difficulty()
+            self.number_of_lives = self.get_number_of_lives(self.difficulty)
+            self.chosen_word = self.get_word(self.difficulty)
+            self.current_word_hidden = self.get_hidden_word(self.chosen_word)
+            self.hangman_images = self.get_hangman_images(self.difficulty)
+            self.run_game()
+
 
     def run_game(self):
         print("Let's play!\n")
         while self.number_of_lives > 0:
             user_guess = self.make_a_guess()
             self.current_word_hidden = self.check_user_guess(user_guess, self.current_word_hidden)
-
-
-    
-
-    
+            word_guessed = self.has_word_been_guessed(self.current_word_hidden)
+            if word_guessed == True:
+                print("You won!")
+                break
+        if self.number_of_lives == 0:
+            print("You lost:(")
+        self.restart_game()
