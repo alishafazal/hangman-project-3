@@ -33,7 +33,7 @@ class Hangman:
         User input corresponds to the level of difficulty the
         user would like to play at. Try except statement is nested
         within a while loop and checks if the user has entered an
-        integer, if not, an error message will be raised. The loop is 
+        integer, if not, an error message will be raised. The loop is
         broken when valid input is entered
         """
         print("Which level of difficulty would you like to play?")
@@ -46,8 +46,8 @@ class Hangman:
         valid_difficulty = False
         while valid_difficulty is False:
             try:
-                user_selected_difficulty = int(input
-                ("Enter the number of the coressponding level(1-4):\n"))
+                user_selected_difficulty = int(input(
+                    "Enter the number of the corresponding level(1-4):\n"))
                 print()
                 valid_difficulty = True
             except ValueError as e:
@@ -55,13 +55,17 @@ class Hangman:
                 continue
 
             if user_selected_difficulty == 1:
-                print("You have selected to play game difficulty level: Easy\n")
+                print(
+                    "You have selected to play difficulty level: Easy\n")
             elif user_selected_difficulty == 2:
-                print("You have selected to play game difficulty level: Medium\n")
+                print(
+                    "You have selected to play difficulty level: Medium\n")
             elif user_selected_difficulty == 3:
-                print("You have selected to play game difficulty level: Hard\n")
+                print(
+                    "You have selected to play difficulty level: Hard\n")
             elif user_selected_difficulty == 4:
-                print("You have selected to play game difficulty level: Random\n")
+                print(
+                    "You have selected to play difficulty level: Random\n")
                 user_selected_difficulty = random.randint(1, 3)
             else:
                 print("Please enter a valid number\n")
@@ -128,8 +132,9 @@ class Hangman:
 
     def get_hidden_word(self, chosen_word):
         """
-        For the random word, each letter of the random word is iterated over using a
-        for loop, replaced with a dash and stored in a varible for use later in the game
+        For the random word, each letter of the random word
+        is iterated over using a for loop, replaced with a
+        dash and stored in a varible for use later in the game
         """
         hidden_word = ""
         hidden_letter = "-"
@@ -151,16 +156,18 @@ class Hangman:
 
     def make_a_guess(self):
         """
-        Try except else statement is placed within a while loop. If user input
-        is not a letter of the alphabet, then a ValueError is raised. The loop
-        is broken when valid input is entered. The user input is stored in a variable
+        Try except else statement is placed within a while loop. If user
+        input is not a letter of the alphabet, then a ValueError is raised.
+        The loop is broken when valid input is entered. The user input is
+        stored in a variable
         """
         correct_input = False
         while correct_input is False:
             try:
                 user_guess = input("Guess a letter:\n")
                 if user_guess not in self.alphabet:
-                    raise ValueError("Invalid input. Please enter a valid letter")
+                    raise ValueError(
+                        "Invalid input. Please enter a valid letter")
             except ValueError as e:
                 print(f"ValueError: {e}")
             else:
@@ -169,14 +176,16 @@ class Hangman:
 
     def check_user_guess(self, user_guess, current_word_hidden):
         """
-        Checks for a match between the user input and the letters within the chosen word.
-        a dash is removed and replaced with correct input and for incorrect input a life
+        Checks for a match between the user input and the letters
+        within the chosen word. A dash is removed and replaced
+        with correct input and for incorrect input a life
         is lost
         """
         letter_match = False
         for index in range(len(self.chosen_word)):
             if self.chosen_word[index] == user_guess:
-                current_word_hidden = current_word_hidden[:index] + user_guess + current_word_hidden[index + 1:]
+                current_word_hidden = current_word_hidden[
+                    :index] + user_guess + current_word_hidden[index + 1:]
                 letter_match = True
         if letter_match is False:
             self.number_of_lives -= 1
@@ -221,15 +230,16 @@ class Hangman:
 
     def run_game(self):
         """
-        Runs the main game play. If statement is used to check whether the user has
-        won or lost based on whether the word has been guessed or if there are no
-        lives remaining
+        Runs the main game play. If statement is used to check whether
+        the user has won or lost based on whether the word has been guessed
+        or if there are no lives remaining
         """
         os.system('cls||clear')
         print("Let's play!\n")
         while self.number_of_lives > 0:
             user_guess = self.make_a_guess()
-            self.current_word_hidden = self.check_user_guess(user_guess, self.current_word_hidden)
+            self.current_word_hidden = self.check_user_guess(
+                user_guess, self.current_word_hidden)
             word_guessed = self.has_word_been_guessed(self.current_word_hidden)
             if word_guessed is True:
                 print("You won!")
