@@ -1,6 +1,15 @@
 class HangmanImages:
+    """
+    This class holds the hangman images within static methods which are
+    displayed at the appropriate time and for the corresponding amount of 
+    lives left for each level of difficulty
+    """
     @staticmethod
     def easy_lives_images():
+        """
+        Contains a list of hangman images to be displayed for the easy difficulty
+        level
+        """
         easy_lives_stage = ["""
             ___________
             |/       |
@@ -64,6 +73,10 @@ class HangmanImages:
 
     @staticmethod
     def medium_lives_images():
+        """
+        Contains a list of hangman images to be displayed for the medium difficulty
+        level
+        """
         medium_lives_stage = ["""
             ___________
             |/       |
@@ -119,6 +132,10 @@ class HangmanImages:
 
     @staticmethod
     def hard_lives_images():
+        """
+        Contains a list of hangman images to be displayed for the hard difficulty
+        level
+        """
         hard_lives_stage = ["""
             ___________
             |/       |
