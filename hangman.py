@@ -1,4 +1,5 @@
 import random
+import time
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
@@ -12,7 +13,9 @@ class Hangman:
 
     def __init__(self):
         print("HANGMAN\n")
+        time.sleep(1)
         print("Welcome to Hangman!\n")
+        time.sleep(1)
         self.difficulty = self.select_difficulty()
         self.number_of_lives = self.get_number_of_lives(self.difficulty)
         self.chosen_word = self.get_word(self.difficulty)
@@ -31,6 +34,7 @@ class Hangman:
         print("2 - Medium")
         print("3 - Hard")
         print("4 - Random\n")
+        time.sleep(2)
 
         valid_difficulty = False
         while valid_difficulty == False:
@@ -167,10 +171,12 @@ class Hangman:
             if self.chosen_word[index] == user_guess:
                 current_word_hidden = current_word_hidden[:index] + user_guess + current_word_hidden[index + 1:]
                 letter_match = True
+                print(self.number_of_lives)
+                print(f'list length: {len(self.hangman_images)}')
         if letter_match == False:
             self.number_of_lives -= 1
         print(current_word_hidden)
-        print(self.hangman_images[self.number_of_lives])
+        print(self.hangman_images[self.number_of_lives - 1])
         print(f"You have {self.number_of_lives} lives remaining")
         return current_word_hidden
 
@@ -207,7 +213,6 @@ class Hangman:
             self.current_word_hidden = self.get_hidden_word(self.chosen_word)
             self.hangman_images = self.get_hangman_images(self.difficulty)
             self.run_game()
-
 
     def run_game(self):
         """
