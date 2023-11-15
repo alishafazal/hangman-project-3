@@ -5,12 +5,17 @@ import gspread
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
 
+
 class Hangman:
     """
-    The Hangman class contains all game variables and methods needed to play the game
+    The Hangman class contains all game variables and methods needed to
+    play the game
     """
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-        "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    alphabet = [
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+        "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+        "u", "v", "w", "x", "y", "z"
+        ]
 
     def __init__(self):
         print("HANGMAN\n")
@@ -25,10 +30,11 @@ class Hangman:
 
     def select_difficulty(self):
         """
-        User input corresponds to the level of difficulty the user would like to play at
-        Try except statement is nested within a while loop and checks if the user has 
-        entered an integer, if not, an error message will be raised. The loop is broken
-        when valid input is entered. 
+        User input corresponds to the level of difficulty the
+        user would like to play at. Try except statement is nested
+        within a while loop and checks if the user has entered an
+        integer, if not, an error message will be raised. The loop is 
+        broken when valid input is entered
         """
         print("Which level of difficulty would you like to play?")
         print("1 - Easy")
@@ -38,7 +44,7 @@ class Hangman:
         time.sleep(2)
 
         valid_difficulty = False
-        while valid_difficulty == False:
+        while valid_difficulty is False:
             try:
                 user_selected_difficulty = int(input
                 ("Enter the number of the coressponding level(1-4):\n"))
@@ -70,9 +76,9 @@ class Hangman:
         access_lives = {"Easy": 6, "Medium": 5, "Hard": 4}
 
         if difficulty == 1:
-           easy_lives = access_lives["Easy"]
-           print(f"You have {easy_lives} lives\n")
-           return easy_lives
+            easy_lives = access_lives["Easy"]
+            print(f"You have {easy_lives} lives\n")
+            return easy_lives
         elif difficulty == 2:
             medium_lives = access_lives["Medium"]
             print(f"You have {medium_lives} lives\n")
@@ -150,7 +156,7 @@ class Hangman:
         is broken when valid input is entered. The user input is stored in a variable
         """
         correct_input = False
-        while correct_input == False:
+        while correct_input is False:
             try:
                 user_guess = input("Guess a letter:\n")
                 if user_guess not in self.alphabet:
@@ -172,7 +178,7 @@ class Hangman:
             if self.chosen_word[index] == user_guess:
                 current_word_hidden = current_word_hidden[:index] + user_guess + current_word_hidden[index + 1:]
                 letter_match = True
-        if letter_match == False:
+        if letter_match is False:
             self.number_of_lives -= 1
         print(current_word_hidden)
         print(self.hangman_images[self.number_of_lives])
@@ -182,8 +188,8 @@ class Hangman:
     def has_word_been_guessed(self, current_word_hidden):
         """
         For loop iterates over each letter in the current word to determine
-        if any dashes remain which determines if the word has been 
-        guessed or not
+        if any dashes remain which determines if the word has been guessed
+        or not
         """
         for letter in current_word_hidden:
             if letter == "-":
@@ -197,7 +203,7 @@ class Hangman:
         when valid input is given
         """
         valid_answer = False
-        while valid_answer == False:
+        while valid_answer is False:
             play_again = input("Would you like to play again?\ny/n \n")
             if play_again == "y" or play_again == "n":
                 valid_answer = True
@@ -225,7 +231,7 @@ class Hangman:
             user_guess = self.make_a_guess()
             self.current_word_hidden = self.check_user_guess(user_guess, self.current_word_hidden)
             word_guessed = self.has_word_been_guessed(self.current_word_hidden)
-            if word_guessed == True:
+            if word_guessed is True:
                 print("You won!")
                 break
         if self.number_of_lives == 0:
