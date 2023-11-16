@@ -1,5 +1,6 @@
 """
 Imported packages and modules section
+Details of the purpose of each can be found in the README file
 """
 import random
 import time
