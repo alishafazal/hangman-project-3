@@ -1,6 +1,7 @@
 import random
 import time
 import os
+from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
@@ -18,7 +19,9 @@ class Hangman:
         ]
 
     def __init__(self):
-        print("HANGMAN\n")
+        print(colored(("-------"), "yellow"))
+        print(colored(("HANGMAN"), "cyan"))
+        print(colored(("-------"), "yellow"))
         time.sleep(1)
         print("Welcome to Hangman!\n")
         time.sleep(1)
@@ -36,22 +39,21 @@ class Hangman:
         integer, if not, an error message will be raised. The loop is
         broken when valid input is entered
         """
-        print("Which level of difficulty would you like to play?")
+        print("Which level of difficulty would you like to play?\n")
         print("1 - Easy")
         print("2 - Medium")
         print("3 - Hard")
         print("4 - Random\n")
-        time.sleep(2)
+        time.sleep(1)
 
         valid_difficulty = False
         while valid_difficulty is False:
             try:
                 user_selected_difficulty = int(input(
                     "Enter the number of the corresponding level(1-4):\n"))
-                print()
                 valid_difficulty = True
             except ValueError as e:
-                print("Please enter a number between 1-4")
+                print("Please enter a number between 1-4\n")
                 continue
 
             if user_selected_difficulty == 1:
@@ -191,7 +193,7 @@ class Hangman:
             self.number_of_lives -= 1
         print(current_word_hidden)
         print(self.hangman_images[self.number_of_lives])
-        print(f"You have {self.number_of_lives} lives remaining")
+        print(f"You have {self.number_of_lives} lives remaining\n")
         return current_word_hidden
 
     def has_word_been_guessed(self, current_word_hidden):
@@ -214,10 +216,11 @@ class Hangman:
         valid_answer = False
         while valid_answer is False:
             play_again = input("Would you like to play again?\ny/n \n")
+            os.system('cls||clear')
             if play_again == "y" or play_again == "n":
                 valid_answer = True
             else:
-                print("Please enter either y or n")
+                print(colored(("Please enter either y or n\n"), "yellow"))
                 valid_answer = False
 
         if play_again == "y":
@@ -242,8 +245,8 @@ class Hangman:
                 user_guess, self.current_word_hidden)
             word_guessed = self.has_word_been_guessed(self.current_word_hidden)
             if word_guessed is True:
-                print("You won!")
+                print(colored(("You won!:)\n"), "green"))
                 break
         if self.number_of_lives == 0:
-            print("You lost:(")
+            print(colored(("You lost:(\n"), "red"))
         self.restart_game()
