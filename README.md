@@ -104,3 +104,10 @@ In this section there are a number of different features, which are outlined bel
 - Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used a Google Sheets API to retrieve the relavent words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
 
 ![spreadsheet](assets/images/spreadsheet.png)
+
+### Future Features
+- Allow the user to add their own words which will update the Google spreadsheet accordingly
+- Add a highscore system which can create competition between users
+
+## Testing
+### Validator Testing
