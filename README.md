@@ -54,11 +54,10 @@ Before I wrote any code, I planned the design of the game through the use of a f
 
 ## Features
 ### Existing Features
-#### Introduction and Select Level of Difficulty:
-The game title and levels of difficulty are the first things the user are presented with. The game title is coloured to make it stand out so the user is reminded of the game they are playing. Next, the user can pick the difficulty level they would like to play, or they can select random which will choose a random level for the user. The execution of each line is suspended for 1 second using the sleep() function to allow time for the user to read and to create flow instead of all text appearing at once.
+#### Introduction and Select Level of Difficulty Section:
+The game title and levels of difficulty are the first things the user are presented with. The game title is coloured to make it stand out so the user is reminded of the game they are playing and to add an element of fun. Next, the user can pick the difficulty level they would like to play, or they can select random which will choose a random level for the user. The execution of each line is suspended for 1 second using the sleep() function, to allow time for the user to read the text and to create flow instead of all text appearing at once.
 
 ![first-feature](assets/images/first-feature.png)
-
 
 #### Number of Lives Section:
 Once the user has chosen the level of difficulty they would like to play, the number of lives they have are revealed.
@@ -68,11 +67,40 @@ Once the user has chosen the level of difficulty they would like to play, the nu
 
 ![second-feature](assets/images/second-feature.png)
 
-#### Main Game Play Section
-In this section, the terminal is cleared to make it clear that this is the main game section and to make the game less cluttered. The user is asked to input a letter they think could be in the word. If they make an incorrect guess, like in the example below, they will lose a life and the hangman image will reflect this by showing the first piece of the hangman
+#### Main Game Play Section:
+
+In this section there are a number of different features, which are outlined below.
+
+- Clear the terminal: The terminal is initially cleared to make it clear that this is the main game section and to make the game less cluttered. 
+
+- User input: The user is asked to input a letter they think could be in the word. If they make an incorrect guess, like in the example below, they will lose a life and the hangman image will reflect this by showing the first piece of the hangman.
 
 ![fourth-feature](assets/images/fourth-feature.png)
 
+- User input: However, if the user guesses a correct letter, the dash is replaced with the guess and the number of lives and hangman image stays the same.
+
+![fourth-feature-new](assets/images/fourth-feature-new.png)
+
+- Error message: An error message will appear if the user enters anything other than an lower case letter for their guess.
+
+![sixth-feature](assets/images/sixth-feature.png)
+
+- You lost message: When the user has ran out of lives, the full hangman image is revealed and a "You lost" message is shown. The message is coloured red to further symbolise that the game has been lost.
+
+![seventh-feature](assets/images/seventh-feature.png)
+
+- You won message: A "You won!" message is displayed to signal that the user has guessed the word correctly and therefore won the game. The message coloured green to further symbolise that they have won the game.
+
+![eighth-feature](assets/images/eighth-feature.png)
+
+- Play again feature: When the user either wins or loses the game, the play again feature is displayed. This feature makes the game play more efficient for the user, becuase if they want to play the game again they don't have to restart it manually, they can simply type in "y". If "n" is entered, the game will stop. If any other input apart from "y" or "n" is entered, then a message will display telling the user to input either "y" or "n". The message is coloured yellow to make it clear that they have entered an invalid input.
+
+![ninth-feature](assets/images/ninth-feature.png)
 
 
+#### Other features:
+- Hangman images: The hangman images as shown in the above features were included to make the game more visually appealing. All the images used for each difficulty level are stored in the hangman_images file in static methods respectively, within a HangmanImages class. I chose to place these images in a seperate file to keep in line with the seperation of concerns principle and keeping the code readable and reusuable.
 
+- Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used a Google Sheets API to retrieve the relavent words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
+
+![spreadsheet](assets/images/spreadsheet.png)
