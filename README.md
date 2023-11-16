@@ -79,7 +79,7 @@ In this section there are a number of different features, which are outlined bel
 
 - User input: However, if the user guesses a correct letter, the dash is replaced with the guess and the number of lives and hangman image stays the same.
 
-![fourth-feature-new](assets/images/fourth-feature-new.png)
+![fifth-feature](assets/images/fifth-new.png)
 
 - Error message: An error message will appear if the user enters anything other than an lower case letter for their guess.
 
