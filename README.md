@@ -97,7 +97,6 @@ In this section there are a number of different features, which are outlined bel
 
 ![ninth-feature](assets/images/ninth-feature.png)
 
-
 #### Other features:
 - Hangman images: The hangman images as shown in the above features were included to make the game more visually appealing. All the images used for each difficulty level are stored in the hangman_images file in static methods respectively, within a HangmanImages class. I chose to place these images in a seperate file to keep in line with the seperation of concerns principle and keeping the code readable and reusuable.
 
@@ -111,3 +110,15 @@ In this section there are a number of different features, which are outlined bel
 
 ## Testing
 ### Validator Testing
+All three Python files were tested using the CI Python Linter. No errors were raised:
+
+hangman.py:
+
+
+hangman_images.py:
+
+![hangman-images-file-validation](assets/images/hangman-images-validation.png)
+
+run.py:
+
+![run-file-validation](assets/images/run-file-validation.png)
