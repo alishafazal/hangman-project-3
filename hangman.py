@@ -1,10 +1,10 @@
 import random
 import time
 import os
-from termcolor import colored
 import gspread
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
+from termcolor import colored
 
 
 class Hangman:
