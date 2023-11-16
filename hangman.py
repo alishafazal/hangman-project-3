@@ -1,3 +1,6 @@
+"""
+Imported packages and modules section
+"""
 import random
 import time
 import os
@@ -51,6 +54,7 @@ class Hangman:
             try:
                 user_selected_difficulty = int(input(
                     "Enter the number of the corresponding level(1-4):\n"))
+                time.sleep(1)
                 valid_difficulty = True
             except ValueError as e:
                 print("Please enter a number between 1-4\n")
@@ -58,19 +62,23 @@ class Hangman:
 
             if user_selected_difficulty == 1:
                 print(
-                    "You have selected to play difficulty level: Easy\n")
+                    "\nYou have selected to play difficulty level: Easy\n")
+                time.sleep(1)
             elif user_selected_difficulty == 2:
                 print(
-                    "You have selected to play difficulty level: Medium\n")
+                    "\nYou have selected to play difficulty level: Medium\n")
+                time.sleep(1)
             elif user_selected_difficulty == 3:
                 print(
-                    "You have selected to play difficulty level: Hard\n")
+                    "\nYou have selected to play difficulty level: Hard\n")
+                time.sleep(1)
             elif user_selected_difficulty == 4:
                 print(
-                    "You have selected to play difficulty level: Random\n")
+                    "\nYou have selected to play difficulty level: Random\n")
+                time.sleep(1)
                 user_selected_difficulty = random.randint(1, 3)
             else:
-                print("Please enter a valid number\n")
+                print("\nPlease enter a valid number\n")
                 valid_difficulty = False
 
         return user_selected_difficulty
@@ -171,7 +179,7 @@ class Hangman:
                     raise ValueError(
                         "Invalid input. Please enter a valid letter")
             except ValueError as e:
-                print(f"ValueError: {e}")
+                print(f"\nValueError: {e}\n")
             else:
                 correct_input = True
         return user_guess

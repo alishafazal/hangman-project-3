@@ -1,6 +1,5 @@
 # Importing the Hangman class from the hangman file
 from hangman import Hangman
-from termcolor import colored
 
 """
 Below an instance of the Hangman class is created
