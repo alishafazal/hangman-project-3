@@ -41,6 +41,13 @@ To expand users vocabulary and to provide a fun learning experience.
 ### Audience
 As the game depicts an image of the hangman being hung when the game has been lost, the target audience is 15 years and over.
 
-### Comunication
+### Communication
 - As the purpose of the game is to provide an entertaining yet challenging experience, I have intuitively designed the game so the user can easily work their way through the game from start to finish, with an option to restart the game at the end so their main focus is only guessing the word.
 - As it is a command-line based game, I have added colour to certain words and sentances to provide a bit more excitement. All colours used have good contrast against the black background.
+
+## Design
+### Wireframes
+
+Before I wrote any code, I planned the design of the game through the use of a flow chart as shown below, to help me visualise what I needed to build.
+
+![Lucidchart](assets/images/lucid-chart.png)
