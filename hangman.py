@@ -1,13 +1,13 @@
 """
 Imported packages and modules section
 """
-import random # used to generate random numbers
-import time # used to cause a delay in the excution of the code
-import os # used to clear the terminal
-import gspread # used to access data in the Google spreadsheet
+import random  # used to generate random numbers
+import time  # used to cause a delay in the excution of the code
+import os  # used to clear the terminal
+import gspread  # used to access data in the Google spreadsheet
 from google.oauth2.service_account import Credentials
 from hangman_images import HangmanImages
-from termcolor import colored # used to output coloured text
+from termcolor import colored  # used to output coloured text
 
 
 class Hangman:
