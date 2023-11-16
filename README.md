@@ -51,3 +51,28 @@ As the game depicts an image of the hangman being hung when the game has been lo
 Before I wrote any code, I planned the design of the game through the use of a flow chart as shown below, to help me visualise what I needed to build.
 
 ![Lucidchart](assets/images/lucid-chart.png)
+
+## Features
+### Existing Features
+#### Introduction and Select Level of Difficulty:
+The game title and levels of difficulty are the first things the user are presented with. The game title is coloured to make it stand out so the user is reminded of the game they are playing. Next, the user can pick the difficulty level they would like to play, or they can select random which will choose a random level for the user. The execution of each line is suspended for 1 second using the sleep() function to allow time for the user to read and to create flow instead of all text appearing at once.
+
+![first-feature](assets/images/first-feature.png)
+
+
+#### Number of Lives Section:
+Once the user has chosen the level of difficulty they would like to play, the number of lives they have are revealed.
+- Easy level: 6 lives
+- Medium level: 5 lives
+- Hard level: 4 lives
+
+![second-feature](assets/images/second-feature.png)
+
+#### Main Game Play Section
+In this section, the terminal is cleared to make it clear that this is the main game section and to make the game less cluttered. The user is asked to input a letter they think could be in the word. If they make an incorrect guess, like in the example below, they will lose a life and the hangman image will reflect this by showing the first piece of the hangman
+
+![fourth-feature](assets/images/fourth-feature.png)
+
+
+
+
