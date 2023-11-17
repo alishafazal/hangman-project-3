@@ -32,11 +32,11 @@ The user can select the difficulty level of the game, which is either easy, medi
 
 ## UX
 
-### Application purpose
-To allow users to be entertained and challenged through guessing an unknown word with a limited amount of guesses.
+### Application Purpose
+To allow users to be entertained and challenged by guessing an unknown word with a limited amount of guesses.
 
-### Application goals
-To expand users vocabulary and to provide a fun learning experience.
+### Application Goals
+To expand users vocabulary and to provide a fun learning experience for all.
 
 ### Audience
 As the game depicts an image of the hangman being hung when the game has been lost, the target audience is 15 years and over.
@@ -100,7 +100,7 @@ In this section there are a number of different features, which are outlined bel
 #### Other features:
 - Hangman images: The hangman images as shown in the above features were included to make the game more visually appealing. All the images used for each difficulty level are stored in the hangman_images file in static methods respectively, within a HangmanImages class. I chose to place these images in a seperate file to keep in line with the seperation of concerns principle and keeping the code readable and reusuable.
 
-- Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used a Google Sheets API to retrieve the relavent words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
+- Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used a Google Sheets API to retrieve the relevant words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
 
 ![spreadsheet](assets/images/spreadsheet.png)
 
@@ -130,7 +130,7 @@ run.py:
 ## Programs and Libraries Used
 - [GitHub](https://github.com/) - Used to store the project repository.
 - [GitPod](https://gitpod.io/) - Cloud development environment used to create my Python files.
-- [Heroku](https://www.heroku.com/) - Cloud platform allowing me to deploy my project.
+- [Heroku](https://www.heroku.com/) - Cloud platform used to deploy my project.
 - [Google Sheets](https://docs.google.com/spreadsheets/u/0/) - Used to store the all the words in the game.
 - [TinyPNG](https://tinypng.com/) - Used to compress all .png files.
 - [Am I Responsive?](https://ui.dev/amiresponsive) - Used to reveal how the game looks in the mock terminal on different devices.
@@ -140,10 +140,20 @@ run.py:
 This project was deployed using Heroku. The steps taken to deploy this project are outlined below:
 
 #### Preparing for deployment:
-1. Add a new line character ("\n") at the end of each input request
-2. Create a list of dependancies. to go into the requirements.txt file by typing "pip3 freeze > requirements.txt" into the terminal.
+1. Add a new line character ("\n") at the end of each input request.
+2. Create a list of dependancies to go into the requirements.txt file by typing "pip3 freeze > requirements.txt" into the terminal.
 
 #### Deployment:
+1. Log into Heroku and in the dashboard, press the "Create new app" button.
+2. Click on the "Settings" tab, scroll down to the "Reveal Config Vars" button and click on it to create config vars.
+3. Add the first config vars. The key is "CREDS" and value is the contents of the creds.json file.
+4. Add the second config vars. The key is "PORT" and value is "8000".
+5. Click on the "Add buildpack" button on the same page and add the buildpacks "python" and "node.js" in this order.
+6. Click on the "Deploy" tab.
+7. Choose the "GitHub" deployment method and then connect to GitHub.
+8. Scroll down to the "Automatic deploys" section, select the "main" branch to deploy from and then press the "Enable Automatic Deploys" button to deploy the project.
 
+The link to my live site:
 
 ## Credits
+
