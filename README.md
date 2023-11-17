@@ -1,10 +1,15 @@
 # Hangman
 
-The aim of this project was to create a fun and thought-provoking command-line hangman game.
-
-The user can select the difficulty level of the game, which is either easy, medium or hard. Once this is selected, the Google Sheets API retrieves a random word from the chosen difficulty words list in the Google spreadsheet. The chosen word is replaced with dashes to hide the word from the user. The user is then asked to input a letter, if the user guesses correctly, the dash is replaced with the letter. If they guess incorrectly, the user will lose a life. The user wins the game if they can guess the word before they run out of lives, if they can't, they will lose. The user has a final option to play again or not.
+The aim of this project was to create a fun and thought-provoking Python terminal hangman game.
 
 ![Am I responsive](assets/images/am-i-responsive.png)
+
+## How to Play
+
+- The user selects the difficulty level of the game, which is either easy, medium or hard.
+- The user inputs a letter that they think is apart of the word they are trying to guess.
+- The game is won if the user guesses all the letters in the word.
+- The game is lost if the user runs out of lives before they could guess all the letter in the word.
 
 ## Table of contents
 - [UX](#ux)
@@ -19,6 +24,8 @@ The user can select the difficulty level of the game, which is either easy, medi
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Future Features](#future-features)
+
+- [Data Model](#data-model)
 
 - [Testing](#testing)
   - [Validator Testing](#validator-testing)
@@ -43,7 +50,7 @@ As the game depicts an image of the hangman being hung when the game has been lo
 
 ### Communication
 - As the purpose of the game is to provide an entertaining yet challenging experience, I have intuitively designed the game so the user can easily work their way through the game from start to finish, with an option to restart the game at the end so the users main focus is only guessing the word.
-- As it is a command-line game, I have added colour to certain words and sentances to provide a bit more excitement. All colours used have good contrast against the black background.
+- As it is a terminal game, I have added colour to certain words and sentances to provide a bit more excitement. All colours used have good contrast against the black background.
 
 ## Design
 ### Wireframes
@@ -108,6 +115,14 @@ In this section there are a number of different features, which are outlined bel
 - Allow the user to add their own words which will update the Google spreadsheet accordingly.
 - Add a highscore system which can create competition between users.
 
+## Data Model
+
+I have used a Hangman class to store all the game variables needed such as the level of difficulty, the number of lives, the chosen word, the chosen word but hidden with dashes and the hangman images. The Hangman class contains all the methods needed to run the game. I have stored this in a file named hangman.
+
+I have used a second class in my hangman_images file named HangmanImages. This class contains three static methods, one for each level of difficulty (easy, medium and hard), which each hold a list of hangman images to be displayed each time a user loses a life. I imported this hangman_images class into my hangman file to be able to be able to access the lists and iterate through them to access each hangman image
+
+In my run file I have imported the Hangman class and created an instance of the Hangman class. I also call the run_game() method in this file. Running this file will commence the game.
+
 ## Testing
 ### Validator Testing
 All three Python files were tested using the CI Python Linter. No errors were raised:
@@ -123,6 +138,13 @@ hangman_images.py:
 run.py:
 
 ![run-file-validation](assets/images/run-file-validation.png)
+
+### Manual Testing
+I have tested all possible outcomes of the game. This has been done by:
+
+- Entering invalid input each time input is requested. An appropriate error message is displayed to inform the user of their actions.
+- All hangman images display correctly according to the number of lives left.
+- The number of lives decreases correctly for each life lost.
 
 ### Solved Bugs
 When testing my game after I had created all the methods to run the whole program, I had a reccuring error message that would appear only when the user guessed a correct letter on the first try:
