@@ -1,8 +1,8 @@
 # Hangman
 
-The aim of this project was to create a fun and thought-provoking command-line based hangman game.
+The aim of this project was to create a fun and thought-provoking command-line hangman game.
 
-The user can select the difficulty level of the game, which is either easy, medium or hard. Once this is selected, the Google Sheets API retrieves a random word from the chosen difficulty words list in the Google spreadsheet. The chosen word is replaced with dashes to hide the word from the user. The user is then asked to input a letter, if the user guesses correctly, the dash is replaced with the letter. If they guess incorrectly, the user will lose a life. The user wins the game if they can guess the word before they run out of lives, if they cant they will lose. The user has a final option to play again or not.
+The user can select the difficulty level of the game, which is either easy, medium or hard. Once this is selected, the Google Sheets API retrieves a random word from the chosen difficulty words list in the Google spreadsheet. The chosen word is replaced with dashes to hide the word from the user. The user is then asked to input a letter, if the user guesses correctly, the dash is replaced with the letter. If they guess incorrectly, the user will lose a life. The user wins the game if they can guess the word before they run out of lives, if they can't, they will lose. The user has a final option to play again or not.
 
 ![Am I responsive](assets/images/am-i-responsive.png)
 
@@ -39,11 +39,11 @@ To allow users to be entertained and challenged by guessing an unknown word with
 To expand users vocabulary and to provide a fun learning experience for all.
 
 ### Audience
-As the game depicts an image of the hangman being hung when the game has been lost, the target audience is 15 years and over.
+As the game depicts an image of the hangman being hung when the game has been lost, the target audience is 16 years and over.
 
 ### Communication
-- As the purpose of the game is to provide an entertaining yet challenging experience, I have intuitively designed the game so the user can easily work their way through the game from start to finish, with an option to restart the game at the end so their main focus is only guessing the word.
-- As it is a command-line based game, I have added colour to certain words and sentances to provide a bit more excitement. All colours used have good contrast against the black background.
+- As the purpose of the game is to provide an entertaining yet challenging experience, I have intuitively designed the game so the user can easily work their way through the game from start to finish, with an option to restart the game at the end so the users main focus is only guessing the word.
+- As it is a command-line game, I have added colour to certain words and sentances to provide a bit more excitement. All colours used have good contrast against the black background.
 
 ## Design
 ### Wireframes
@@ -55,7 +55,7 @@ Before I wrote any code, I planned the design of the game through the use of a f
 ## Features
 ### Existing Features
 #### Introduction and Select Level of Difficulty Section:
-The game title and levels of difficulty are the first things the user are presented with. The game title is coloured to make it stand out so the user is reminded of the game they are playing and to add an element of fun. Next, the user can pick the difficulty level they would like to play, or they can select random which will choose a random level for the user. The execution of each line is suspended for 1 second using the sleep() function, to allow time for the user to read the text and to create flow instead of all text appearing at once.
+The game title and levels of difficulty are the first things the user are presented with. The game title is coloured to make it stand out so the user is reminded of the game they are playing and to add an element of fun. Next, the user can pick the difficulty level they would like to play, or they can select random which will choose a random level for the user. The execution of each line is suspended for 1 second using the sleep() function from the imported time module, to allow time for the user to read the text and to create flow instead of all text appearing at once.
 
 ![first-feature](assets/images/first-feature.png)
 
@@ -89,7 +89,7 @@ In this section there are a number of different features, which are outlined bel
 
 ![seventh-feature](assets/images/seventh-feature.png)
 
-- You won message: A "You won!" message is displayed to signal that the user has guessed the word correctly and therefore won the game. The message coloured green to further symbolise that they have won the game.
+- You won message: A "You won!" message is displayed to signal that the user has guessed the word correctly and therefore won the game. The message is coloured green to further symbolise that they have won the game.
 
 ![eighth-feature](assets/images/eighth-feature.png)
 
@@ -98,9 +98,9 @@ In this section there are a number of different features, which are outlined bel
 ![ninth-feature](assets/images/ninth-feature.png)
 
 #### Other features:
-- Hangman images: The hangman images as shown in the above features were included to make the game more visually appealing. All the images used for each difficulty level are stored in the hangman_images file in static methods respectively, within a HangmanImages class. I chose to place these images in a seperate file to keep in line with the seperation of concerns principle and keeping the code readable and reusuable.
+- Hangman images: The hangman images as shown in the above features were included to make the game more visually appealing for the user. All the images used for each difficulty level are stored in the hangman_images file in static methods respectively, within a HangmanImages class. I chose to place these images in a seperate file to keep in line with the seperation of concerns principle and keeping the code readable and reusuable.
 
-- Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used a Google Sheets API to retrieve the relevant words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
+- Words list: Instead of making a list of words within the hangman file, I placed all words into a Google spreadsheet and used the Google Sheets API to retrieve the relevant words. This helped me keep my code clean and allowed me to learn how to integrate and use the Google Sheets API.
 
 ![spreadsheet](assets/images/spreadsheet.png)
 
@@ -125,7 +125,7 @@ run.py:
 ![run-file-validation](assets/images/run-file-validation.png)
 
 ### Solved Bugs
-When testing my game after I had created all the methods to run the whole program, I had a reoccuring error message that would appear when the user guessed a correct letter only on the first try:
+When testing my game after I had created all the methods to run the whole program, I had a reccuring error message that would appear only when the user guessed a correct letter on the first try:
 
 ```
 "IndexError: list index out of range"
@@ -135,7 +135,7 @@ The origin of this error was the three lists in my hangman_images file that hold
 ```
 print(self.hangman_images[self.number_of_lives])
 ```
-After consulting with Oisin from tutor support service, he reminded me that list indexing starts from 0. This made me realise what the issue was. When the player has 0 lives left, the full hangman image is shown, so when the user guessed a letter correctly on their first attempt, the code was trying to acess the list item at index 6, however, the list only went up to index 5 so it was trying to access an index that didnt exist, causing the error.
+After consulting with Oisin from tutor support service, he reminded me that list indexing starts from 0. This made me realise what the issue was. When the player has 0 lives left, the full hangman image is shown, so when the user guessed a letter correctly on their first attempt, the code was trying to access the list item at index 6, however, the list only went up to index 5 so it was trying to access a list item at an index that didn't exist, causing the error.
 
 To resolve this, I simply added another hangman image to each hangman images list, so each list for the easy, medium and hard difficulty levels now has 7, 6 and 5 images repectively, to display for each life lost.
 
@@ -165,22 +165,26 @@ This project was deployed using Heroku. The steps taken to deploy this project a
 7. Choose the "GitHub" deployment method and then connect to GitHub.
 8. Scroll down to the "Automatic deploys" section, select the "main" branch to deploy from and then press the "Enable Automatic Deploys" button to deploy the project.
 
-The link to my live site:
+The link to my live site can be found [here.](https://hman-project-3-800c1515cb29.herokuapp.com/)
 
 ## Credits
-- I would like to give credit and a special thank you to Jaspreet, for being there for me throughout my project and for introducing me to static methods, which I then implemented in my code (credit is given accordingly in the hangman_images file).
+- I would like to give credit and a special thank you to [Jaspreet](https://github.com/JaspreetSAujla), for being there for me throughout my project and for introducing me to static methods, which I then decided to implement in my code. Credit is given accordingly in the hangman_images file.
 
-- I used this [article](https://stackoverflow.com/questions/735975/static-methods-in-python) from Stack Overflow to help consoldate my knowledge on static methods and to make sure I was implementing it right and acessing the data from the methods correctly.
+- I used this [article](https://stackoverflow.com/questions/735975/static-methods-in-python) from Stack Overflow to help consolidate my knowledge on static methods and to make sure I was implementing it right and accessing the data from the methods correctly.
 
-- I would like to give credit and a special thank you to my Code Institute mentor Martina Terlevic, for prodiving support and guidance throughout my project.
+- I would like to give credit and a special thank you to my Code Institute mentor Martina Terlevic, for providing support and guidance throughout my project.
 
 - I would like to give credit and a special thank you to Oisin from the Code Institute tutor support service. He was very helpful and very professional in the way he helped me understand why I was recieving the IndexError, as mentioned in the solved bugs section above.
 
-- I was like to give credit to fellow Code Institute student Tucker. The link to their GitHub repository from which I took inspiration from is linked [here.](https://github.com/TuckerFaulk/hangman-project) I specifically took inspiration from line 31 in their run.py file. Upon reading his code, I noticed how he imported the os module and then used the following line of code to clear the terminal, to which I implemented in my own code (credit has been given accordingly in my hangman file):
+- I would like to give credit to fellow Code Institute student Tucker. The link to their GitHub repository from which I took inspiration from is linked [here.](https://github.com/TuckerFaulk/hangman-project) I specifically took inspiration from line 31 in their run.py file. Upon reading their code, I noticed how they imported the os module and then used the following line of code to clear the terminal, to which I took inspiration from in my own code. Credit has been given accordingly in my hangman file:
 
 ```
 os.system('cls||clear')
 ```
-- This [article](https://pypi.org/project/termcolor/) from PyPI helped me to install the termcolour library, so I could colour text in the terminal.
+- This [article](https://pypi.org/project/termcolor/) from PyPI helped me to install the termcolor library, so I could colour text in the terminal.
 
 - I took inspiration from this [article](https://stackoverflow.com/questions/41752946/replacing-a-character-from-a-certain-index) from Stack Overflow, as I saw how they used the below line of code to replace a value for another value at a certain index. This gave me inspiration on how I could go about replacing the dash in the hidden word with a correct user input guess. I have given credit accordingly in my hangman file.
+
+```
+s = s[:index] + newstring + s[index + 1:]
+```
