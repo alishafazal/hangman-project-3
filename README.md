@@ -105,8 +105,8 @@ In this section there are a number of different features, which are outlined bel
 ![spreadsheet](assets/images/spreadsheet.png)
 
 ### Future Features
-- Allow the user to add their own words which will update the Google spreadsheet accordingly
-- Add a highscore system which can create competition between users
+- Allow the user to add their own words which will update the Google spreadsheet accordingly.
+- Add a highscore system which can create competition between users.
 
 ## Testing
 ### Validator Testing
@@ -114,6 +114,7 @@ All three Python files were tested using the CI Python Linter. No errors were ra
 
 hangman.py:
 
+![hangman-images-file-validation](assets/images/hangman-validation.png)
 
 hangman_images.py:
 
@@ -122,3 +123,27 @@ hangman_images.py:
 run.py:
 
 ![run-file-validation](assets/images/run-file-validation.png)
+
+### Solved Bugs
+
+
+## Programs and Libraries Used
+- [GitHub](https://github.com/) - Used to store the project repository.
+- [GitPod](https://gitpod.io/) - Cloud development environment used to create my Python files.
+- [Heroku](https://www.heroku.com/) - Cloud platform allowing me to deploy my project.
+- [Google Sheets](https://docs.google.com/spreadsheets/u/0/) - Used to store the all the words in the game.
+- [TinyPNG](https://tinypng.com/) - Used to compress all .png files.
+- [Am I Responsive?](https://ui.dev/amiresponsive) - Used to reveal how the game looks in the mock terminal on different devices.
+- [Lucidchart](https://www.lucidchart.com/pages/) - Used to create a flow chart to plan the design of the game.
+
+## Deployment
+This project was deployed using Heroku. The steps taken to deploy this project are outlined below:
+
+#### Preparing for deployment:
+1. Add a new line character ("\n") at the end of each input request
+2. Create a list of dependancies. to go into the requirements.txt file by typing "pip3 freeze > requirements.txt" into the terminal.
+
+#### Deployment:
+
+
+## Credits
