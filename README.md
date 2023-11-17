@@ -125,7 +125,19 @@ run.py:
 ![run-file-validation](assets/images/run-file-validation.png)
 
 ### Solved Bugs
+When testing my game after I had created all the methods to run the whole program, I had a reoccuring error message that would appear when the user guessed a correct letter only on the first try:
 
+```
+"IndexError: list index out of range"
+``` 
+The origin of this error was the three lists in my hangman_images file that hold the easy, medium and hard hangman images to be displayed after each life is lost during game play. For the easy, medium and hard difficulty levels, the user has 6, 5 and 4 lives repectively. Within each hangman images list, I placed the same number of images as the number of lives and used the below code to access each image based on the number of lives the user had:
+
+```
+print(self.hangman_images[self.number_of_lives])
+```
+After consulting with Oisin from tutor support service, he reminded me that list indexing starts from 0. This made me realise what the issue was. When the player has 0 lives left, the full hangman image is shown, so when the user guessed a letter correctly on their first attempt, the code was trying to acess the list item at index 6, however, the list only went up to index 5 so it was trying to access an index that didnt exist, causing the error.
+
+To resolve this, I simply added another hangman image to each hangman images list, so each list for the easy, medium and hard difficulty levels now has 7, 6 and 5 images repectively, to display for each life lost.
 
 ## Programs and Libraries Used
 - [GitHub](https://github.com/) - Used to store the project repository.
@@ -156,4 +168,19 @@ This project was deployed using Heroku. The steps taken to deploy this project a
 The link to my live site:
 
 ## Credits
+- I would like to give credit and a special thank you to Jaspreet, for being there for me throughout my project and for introducing me to static methods, which I then implemented in my code (credit is given accordingly in the hangman_images file).
 
+- I used this [article](https://stackoverflow.com/questions/735975/static-methods-in-python) from Stack Overflow to help consoldate my knowledge on static methods and to make sure I was implementing it right and acessing the data from the methods correctly.
+
+- I would like to give credit and a special thank you to my Code Institute mentor Martina Terlevic, for prodiving support and guidance throughout my project.
+
+- I would like to give credit and a special thank you to Oisin from the Code Institute tutor support service. He was very helpful and very professional in the way he helped me understand why I was recieving the IndexError, as mentioned in the solved bugs section above.
+
+- I was like to give credit to fellow Code Institute student Tucker. The link to their GitHub repository from which I took inspiration from is linked [here.](https://github.com/TuckerFaulk/hangman-project) I specifically took inspiration from line 31 in their run.py file. Upon reading his code, I noticed how he imported the os module and then used the following line of code to clear the terminal, to which I implemented in my own code (credit has been given accordingly in my hangman file):
+
+```
+os.system('cls||clear')
+```
+- This [article](https://pypi.org/project/termcolor/) from PyPI helped me to install the termcolour library, so I could colour text in the terminal.
+
+- I took inspiration from this [article](https://stackoverflow.com/questions/41752946/replacing-a-character-from-a-certain-index) from Stack Overflow, as I saw how they used the below line of code to replace a value for another value at a certain index. This gave me inspiration on how I could go about replacing the dash in the hidden word with a correct user input guess. I have given credit accordingly in my hangman file.
