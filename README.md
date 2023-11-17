@@ -119,9 +119,9 @@ In this section there are a number of different features, which are outlined bel
 
 I have used a Hangman class to store all the game variables needed such as the level of difficulty, the number of lives, the chosen word, the chosen word but hidden with dashes and the hangman images. The Hangman class contains all the methods needed to run the game. I have stored this in a file named hangman.
 
-I have used a second class in my hangman_images file named HangmanImages. This class contains three static methods, one for each level of difficulty (easy, medium and hard), which each hold a list of hangman images to be displayed each time a user loses a life. I imported this hangman_images class into my hangman file to be able to be able to access the lists and iterate through them to access each hangman image
+I have used a second class in my hangman_images file named HangmanImages. This class contains three static methods, one for each level of difficulty (easy, medium and hard), which each hold a list of hangman images to be displayed each time a user loses a life. I imported this hangman_images class into my hangman file to be able to access the lists and iterate through them to access each hangman image.
 
-In my run file I have imported the Hangman class and created an instance of the Hangman class. I also call the run_game() method in this file. Running this file will commence the game.
+In my run file, I have imported the Hangman class and created an instance of the Hangman class. I also call the run_game() method in this file. Running this file will commence the game.
 
 ## Testing
 ### Validator Testing
