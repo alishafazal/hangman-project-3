@@ -85,7 +85,7 @@ class Hangman:
 
     def get_number_of_lives(self, difficulty):
         """
-        Acesses number of lives based on level of difficulty
+        Accesses number of lives based on level of difficulty
         """
         access_lives = {"Easy": 6, "Medium": 5, "Hard": 4}
 
@@ -108,8 +108,8 @@ class Hangman:
         if/elif statements access the easy, medium and hard words columns
         in the Google Sheet respectively, and returns a random word to
         use in the game.
-        The code to access the spreadsheet data from lines 88-98 was
-        taken from Code Institute's "Love Sandwiches" walkthrough project
+        The code to access the spreadsheet data from lines 115-125 was
+        inspired from Code Institute's "Love Sandwiches" walkthrough project
         """
 
         SCOPE = [
@@ -189,7 +189,9 @@ class Hangman:
         Checks for a match between the user input and the letters
         within the chosen word. A dash is removed and replaced
         with correct input and for incorrect input a life
-        is lost
+        is lost and the dashes will remain.
+        The code on lines 199-200 was inspired from an article on
+        Stack Overflow, as mentioned in the README file
         """
         letter_match = False
         for index in range(len(self.chosen_word)):
@@ -219,7 +221,10 @@ class Hangman:
         """
         Restarts the game if user inputs y, program stops if user inputs n.
         While loop checks whether the input is valid or not and is broken
-        when valid input is given
+        when valid input is given. When invalid input is given, the terminal
+        will be cleared and an error message will display.
+        The code on line 232 was inspired from fellow CI student Tucker, as
+        mentioned in the README file.
         """
         valid_answer = False
         while valid_answer is False:
@@ -244,6 +249,8 @@ class Hangman:
         Runs the main game play. If statement is used to check whether
         the user has won or lost based on whether the word has been guessed
         or if there are no lives remaining
+        The code on line 255 to clear the terminal was inspired from fellow
+        CI student Tucker, as mentioned in the README file.
         """
         os.system('cls||clear')
         print("Let's play!\n")
