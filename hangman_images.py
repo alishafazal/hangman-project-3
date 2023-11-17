@@ -2,7 +2,9 @@ class HangmanImages:
     """
     This class holds the hangman images within static methods which are
     displayed at the appropriate time and for the corresponding amount of
-    lives left for each level of difficulty
+    lives left for each level of difficulty.
+    I was introduced to static methods through Jaspreet, as outlined in
+    my README file
     """
     @staticmethod
     def easy_lives_images():
