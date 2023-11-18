@@ -9,7 +9,7 @@ The aim of this project was to create a fun and thought-provoking Python termina
 - The user selects the difficulty level of the game, which is either easy, medium or hard.
 - The user inputs a letter that they think is apart of the word they are trying to guess.
 - The game is won if the user guesses all the letters in the word.
-- The game is lost if the user runs out of lives before they could guess all the letter in the word.
+- The game is lost if the user runs out of lives before they could guess all the letters in the word.
 
 ## Table of contents
 - [UX](#ux)
@@ -144,7 +144,7 @@ I have tested all possible outcomes of the game. This has been done by:
 
 - Entering invalid input each time input is requested. An appropriate error message is displayed to inform the user of their actions.
 - All hangman images display correctly according to the number of lives left.
-- The number of lives decreases correctly for each life lost.
+- The number of lives decreases correctly for each incorrect guess.
 
 ### Solved Bugs
 When testing my game after I had created all the methods to run the whole program, I had a reccuring error message that would appear only when the user guessed a correct letter on the first try:
